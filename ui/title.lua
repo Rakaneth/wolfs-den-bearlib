@@ -1,4 +1,4 @@
-local Title = require('ui.ui'):extend("Title")
+local Title = require("ui.ui"):extend("Title")
 
 function Title:init()
     self.name = "title"

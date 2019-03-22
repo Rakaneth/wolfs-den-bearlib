@@ -13,6 +13,7 @@ function BaseClass:extend(name, t)
     return setmetatable(t, {__call = self.new, __index = self})
 end
 
-function BaseClass:init() end
+function BaseClass:init()
+end
 
 return BaseClass

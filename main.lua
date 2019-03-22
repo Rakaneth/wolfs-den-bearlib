@@ -1,13 +1,13 @@
-local terminal = require('BearLibTerminal')
-local UIStack = require('ui.uistack')
-local UI = require('ui.ui')
-local Title = require('ui.title')
-local ROT = require('lib.rotLove.src.rot')
+local terminal = require("BearLibTerminal")
+local UIStack = require("ui.uistack")
+local UI = require("ui.ui")
+local Title = require("ui.title")
+local ROT = require("lib.rotLove.src.rot")
 
 function main()
     --init terminal
     terminal.open()
-    
+
     --init uis
     local input
     UIStack:push(Title())
@@ -21,7 +21,7 @@ function main()
             ui:render(terminal)
         end
         --TODO: Key handling
-        
+
         terminal.refresh()
         input = terminal.read()
         if input == terminal.TK_CLOSE then

@@ -1,7 +1,7 @@
-local BaseClass = require('class')
+local BaseClass = require("class")
 local UI = BaseClass:extend("UI")
 
-function UI:init() 
+function UI:init()
     self.name = "No name"
 end
 
