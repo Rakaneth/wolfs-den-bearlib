@@ -7,7 +7,7 @@ Feel free to fork/use as you wish.
 
 # How to Run
 
-1. Clone this repo: `git clone git://github.com/Rakaneth/wolfs-den-bearlib` 
+1. Clone this repo: `git clone git://github.com/Rakaneth/wolfs-den-bearlib --recurse-submodules` 
 2. Ensure that you have [Lua 5.3.5](https://www.lua.org) installed.
 3. Run `lua main.lua` from a command prompt.
 
