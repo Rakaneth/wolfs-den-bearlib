@@ -3,6 +3,7 @@ local UIStack = require("ui.uistack")
 local UI = require("ui.ui")
 local Title = require("ui.title")
 local ROT = require("lib.rotLove.src.rot")
+local utils = require("utils")
 
 function main()
     --init terminal
@@ -12,6 +13,32 @@ function main()
     local input
     UIStack:push(Title())
     terminal.refresh()
+
+    --test utils
+    local base = {
+        word = "bird",
+        num = 42,
+        nested = {
+            thing = "lol"
+        },
+        f = function()
+            return "hello"
+        end
+    }
+
+    local base_clone = utils.copy(base)
+    local base_merge =
+        utils.merge(
+        base_clone,
+        {
+            word = "mutated",
+            added = "added",
+            nested = {
+                other = "other"
+            }
+        }
+    )
+    base_clone.num = 44
 
     --game loop
     repeat
