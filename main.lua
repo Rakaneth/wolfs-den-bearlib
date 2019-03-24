@@ -4,6 +4,9 @@ local UI = require("ui.ui")
 local Title = require("ui.title")
 local ROT = require("lib.rotLove.src.rot")
 local utils = require("utils")
+local Entity = require("entity.entity")
+local mixins = require("entity.mixin")
+local block_move, block_sight, inventory, player_actor = table.unpack(mixins)
 
 function main()
     --init terminal
@@ -12,33 +15,16 @@ function main()
     --init uis
     local input
     UIStack:push(Title())
-    terminal.refresh()
 
-    --test utils
-    local base = {
-        word = "bird",
-        num = 42,
-        nested = {
-            thing = "lol"
-        },
-        f = function()
-            return "hello"
-        end
-    }
-
-    local base_clone = utils.copy(base)
-    local base_merge =
-        utils.merge(
-        base_clone,
+    --test entity
+    local test =
+        Entity(
         {
-            word = "mutated",
-            added = "added",
-            nested = {
-                other = "other"
-            }
+            name = "test",
+            desc = "A test entity",
+            mixins = {block_move, inventory, player_actor}
         }
     )
-    base_clone.num = 44
 
     --game loop
     repeat
