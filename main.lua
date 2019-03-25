@@ -6,7 +6,7 @@ local ROT = require("lib.rotLove.src.rot")
 local utils = require("utils")
 local Entity = require("entity.entity")
 local mixins = require("entity.mixin")
-local block_move, block_sight, inventory, player_actor = table.unpack(mixins)
+local block_move, block_sight, inventory, player_actor, vitals = table.unpack(mixins)
 
 function main()
     --init terminal
@@ -22,7 +22,7 @@ function main()
         {
             name = "test",
             desc = "A test entity",
-            mixins = {block_move, inventory, player_actor}
+            mixins = {block_move, inventory, player_actor, vitals}
         }
     )
 
@@ -30,7 +30,7 @@ function main()
     repeat
         terminal.clear()
 
-        for _, ui in pairs(UIStack.uis) do
+        for _, ui in UIStack:allUIs() do
             ui:render(terminal)
         end
         --TODO: Key handling

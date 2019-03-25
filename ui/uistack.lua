@@ -30,4 +30,8 @@ function UIStack:popall()
     end
 end
 
+function UIStack:allUIs()
+    return ipairs(self.uis)
+end
+
 return UIStack
