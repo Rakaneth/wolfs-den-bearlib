@@ -5,9 +5,7 @@ local UIStack = {
 function UIStack:push(...)
     local args = {...}
     for _, ui in ipairs(args) do
-        if ui.enter then
-            ui:enter()
-        end
+        ui:enter()
         table.insert(self.uis, ui)
     end
 end

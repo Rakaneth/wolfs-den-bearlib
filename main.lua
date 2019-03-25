@@ -7,6 +7,8 @@ local utils = require("utils")
 local Entity = require("entity.entity")
 local mixins = require("entity.mixin")
 local block_move, block_sight, inventory, player_actor, vitals = table.unpack(mixins)
+local beholder = require("lib.beholder")
+require("ui.input")
 
 function main()
     --init terminal
@@ -15,16 +17,6 @@ function main()
     --init uis
     local input
     UIStack:push(Title())
-
-    --test entity
-    local test =
-        Entity(
-        {
-            name = "test",
-            desc = "A test entity",
-            mixins = {block_move, inventory, player_actor, vitals}
-        }
-    )
 
     --game loop
     repeat
@@ -37,6 +29,9 @@ function main()
 
         terminal.refresh()
         input = terminal.read()
+
+        beholder.trigger(UIStack:peek().name, input)
+
         if input == terminal.TK_CLOSE then
             UIStack:popall()
         end

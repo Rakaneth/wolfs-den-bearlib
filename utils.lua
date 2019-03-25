@@ -5,7 +5,7 @@ function utils.copy(tbl)
     if type(tbl) == "table" then
         copy = {}
         for k, v in next, tbl, nil do
-            copy[k] = v
+            copy[k] = utils.copy(v)
         end
         setmetatable(copy, getmetatable(tbl))
     else
