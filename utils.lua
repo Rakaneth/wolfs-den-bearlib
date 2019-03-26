@@ -67,7 +67,7 @@ end
 
 function utils.filter(tbl, calbak)
     local result = {}
-    for _, v in ipairs(tbl) do
+    for _, v in pairs(tbl) do
         if calbak(v) then
             table.insert(result, v)
         end
@@ -97,10 +97,20 @@ function utils.getProbTable(tbl)
     local result = {}
     for k, v in pairs(tbl) do
         if v.freq then
-            results[k] = v.rarity
+            result[k] = v.rarity
         end
     end
     return result
+end
+
+function utils.distance(a, b)
+    local xdist = math.abs(a.x - b.x)
+    local ydist = math.abs(a.y - b.y)
+    return math.max(xdist, ydist)
+end
+
+function utils.adj(a, b)
+    return utils.distance(a, b) == 1
 end
 
 return utils

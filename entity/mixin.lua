@@ -1,3 +1,5 @@
+local PointSet = require("lib.rotLove.src.rot").Type.PointSet
+
 local block_move = {
     name = "block-move"
 }
@@ -50,24 +52,24 @@ local vitals = {
 }
 
 local move = {
-    name = 'move',
-    group = 'move',
+    name = "move",
+    group = "move",
     tryMoveBy = function(self, dx, dy)
         --TODO: moveby function
-    end,
+    end
 }
 
 local digger = {
-    name = 'digger',
-    group = 'move',
+    name = "digger",
+    group = "move",
     tryMoveBy = function(self, dx, dy)
         --TODO: moveby function (digger)
-    end,
+    end
 }
 
 local stats = {
-    name = 'stats',
-    group = 'stats',
+    name = "stats",
+    group = "stats",
     getStat = function(stat)
         return self[stat] or 0
     end,
@@ -78,12 +80,13 @@ local stats = {
         self.skl = opts.skl or 10
         self.sag = opts.sag or 10
         self.smt = opts.smt or 10
+        self.vision = opts.vision or 6
     end
 }
 
 local equipper = {
-    name = 'equipper',
-    group = 'stats',
+    name = "equipper",
+    group = "stats",
     getStat = function(stat)
         --TODO: implement equipper stats
     end,
@@ -94,17 +97,31 @@ local equipper = {
         self.skl = opts.skl or 10
         self.sag = opts.sag or 10
         self.smt = opts.smt or 10
+        self.vision = opts.vision or 6
+    end
+}
+
+local vision = {
+    name = "vision",
+    visible = PointSet(),
+    can_see = function(self, x, y)
+        if type(x) == "table" then
+            return self.visible:find(x.x, x.y)
+        else
+            return self.visible:find(x, y)
+        end
     end
 }
 
 return {
-    block_move, 
-    block_sight, 
-    inventory, 
-    player_actor, 
-    vitals, 
-    move, 
-    digger, 
+    block_move,
+    block_sight,
+    inventory,
+    player_actor,
+    vitals,
+    move,
+    digger,
     stats,
-    equipper
+    equipper,
+    vision
 }
