@@ -39,6 +39,11 @@ function Entity:init(optParam)
             mixin.init(self, opts)
         end
     end
+    for _, mixin in pairs(opts.mixins or {}) do
+        if mixin.finisher then
+            mixin.finisher(self, opts)
+        end
+    end
 end
 
 function Entity:has(mixin)

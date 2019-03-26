@@ -42,7 +42,69 @@ local vitals = {
     init = function(self, opts)
         self.edrMult = opts.edrMult or 2
         self.vitMult = opts.vitMult or 1
+    end,
+    finisher = function(self)
+        self:heal()
+        self:restore()
     end
 }
 
-return {block_move, block_sight, inventory, player_actor, vitals}
+local move = {
+    name = 'move',
+    group = 'move',
+    tryMoveBy = function(self, dx, dy)
+        --TODO: moveby function
+    end,
+}
+
+local digger = {
+    name = 'digger',
+    group = 'move',
+    tryMoveBy = function(self, dx, dy)
+        --TODO: moveby function (digger)
+    end,
+}
+
+local stats = {
+    name = 'stats',
+    group = 'stats',
+    getStat = function(stat)
+        return self[stat] or 0
+    end,
+    init = function(self, opts)
+        self.str = opts.str or 10
+        self.stam = opts.stam or 10
+        self.spd = opts.spd or 10
+        self.skl = opts.skl or 10
+        self.sag = opts.sag or 10
+        self.smt = opts.smt or 10
+    end
+}
+
+local equipper = {
+    name = 'equipper',
+    group = 'stats',
+    getStat = function(stat)
+        --TODO: implement equipper stats
+    end,
+    init = function(self, opts)
+        self.str = opts.str or 10
+        self.stam = opts.stam or 10
+        self.spd = opts.spd or 10
+        self.skl = opts.skl or 10
+        self.sag = opts.sag or 10
+        self.smt = opts.smt or 10
+    end
+}
+
+return {
+    block_move, 
+    block_sight, 
+    inventory, 
+    player_actor, 
+    vitals, 
+    move, 
+    digger, 
+    stats,
+    equipper
+}
