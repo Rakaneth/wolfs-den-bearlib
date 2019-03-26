@@ -14,21 +14,21 @@ local Tiles = {
         see = false,
         glyph = '#',
         name = "Wall",
-    }
+    },
     ['door_closed'] = {
         walk = false,
         see = false,
         glyph = '+',
         name = "Door (closed)",
         color = "sepia"
-    }
+    },
     ['door_open'] = {
         walk = true,
         see = true,
         glyph = '/',
         name = "Door (open)",
         color = "sepia"
-    }
+    },
     ['stairs_down'] = {
         walk = true,
         see = true,

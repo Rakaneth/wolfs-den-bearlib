@@ -2,7 +2,6 @@ local beholder = require("lib.beholder")
 local terminal = require("BearLibTerminal")
 local UIStack = require("ui.uistack")
 local Main = require("ui.mainscreen")
-local Commands = require('entity.commands')
 
 beholder.observe(
     "title",
