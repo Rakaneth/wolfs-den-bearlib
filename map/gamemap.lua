@@ -62,6 +62,7 @@ local Tiles = {
 
 
 function GameMap:init(opts)
+    opts.connected = true
     self._tiles = Grid()
     self.width = opts.width
     self.height = opts.height
@@ -81,7 +82,7 @@ function GameMap:init(opts)
     local m = self
 
     local map_type = opts["map_type"] or "caves"
-    local ctor = generators[map_type]
+    local ctor = generators[map_type](width, height, opts)
     local calbak = function(x, y, v)
         local cell_type = "floor"
         if v == 2 then
@@ -95,9 +96,9 @@ function GameMap:init(opts)
     end
 
     if map_type == "caves" then
-        opts.connected = true
         ctor:randomize(0.55)
         for i = 1, 5 do
             ctor:create(calbak)
         end
+    end
 end
